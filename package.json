@@ -14,6 +14,7 @@
   "author": "Ofir Elarat",
   "license": "ISC",
   "dependencies": {
+    "xml2js": "^0.4.23",
     "yaml": "2.0.0-9",
     "yargs": "^17.3.0"
   }

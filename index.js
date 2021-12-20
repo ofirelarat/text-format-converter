@@ -3,6 +3,7 @@ const fs = require("fs");
 
 const {convertJSONToObject, convertObjectToJSON} = require("./JSON-converter");
 const {convetYAMLToObject, convertObjectToYAML} = require("./YAML-converter");
+const {convetXMLToObject, convertObjectToXML} = require("./XML-converter");
 
 const options = yargs
  .usage("Usage: -i <input-file> -it <input-type> -o <output-file> -ot <output-type>")
@@ -27,6 +28,9 @@ switch(options.inputType){
     case "YAML":
         inputObj = convetYAMLToObject(textData);
         break;
+    case "XML":
+        inputObj = convetXMLToObject(textData);
+        break;
     default: 
         console.log("cannot parse input type");
 }
@@ -38,6 +42,9 @@ switch(options.outputType){
         break;
     case "YAML":
         outputText = convertObjectToYAML(inputObj);
+        break;
+    case "XML":
+        outputText = convertObjectToXML(inputObj);
         break;
     default: 
         console.log("cannot parse output type");
