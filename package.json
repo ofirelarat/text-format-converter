@@ -1,0 +1,20 @@
+{
+  "name": "text-format-converter",
+  "version": "1.0.0",
+  "description": "just easy way to convert different text formats",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "text",
+    "convert"
+  ],
+  "author": "Ofir Elarat",
+  "license": "ISC",
+  "dependencies": {
+    "yaml": "2.0.0-9",
+    "yargs": "^17.3.0"
+  }
+}
