@@ -3,9 +3,9 @@
 const yargs = require("yargs");
 const fs = require("fs");
 
-const {convertJSONToObject, convertObjectToJSON} = require("./JSON-converter");
-const {convetYAMLToObject, convertObjectToYAML} = require("./YAML-converter");
-const {convetXMLToObject, convertObjectToXML} = require("./XML-converter");
+const {convertJSONToObject, convertObjectToJSON} = require("./converters/JSON-converter");
+const {convetYAMLToObject, convertObjectToYAML} = require("./converters/YAML-converter");
+const {convetXMLToObject, convertObjectToXML} = require("./converters/XML-converter");
 
 const options = yargs
  .usage("Usage: -i <input-file> -it <input-type> -o <output-file> -ot <output-type>")
@@ -15,50 +15,70 @@ const options = yargs
  .option("ot",{ alias: "outputType", describe: "output file type: JSON/YAML/XML..", type: "string", demandOption: true })
  .argv;
 
+const textData = readInputFile(options.inputFile);
+const inputObj = convertInputTextToObject(textData, options.inputType);
+const outputText = convertInputObjToText(inputObj, options.outputType);
+rightOutputToFileOrConsole(outputText, options.outputFile);
 
-console.log(`input file path: ${options.inputFile}`);
-const textData = fs.readFileSync(options.inputFile, "utf8");
 
-let inputObj = null;
-let outputText = "";
+const readInputFile = (inputFilePath) => {
+    console.log(`input file path: ${inputFilePath}`);
+    const textData = fs.readFileSync(inputFilePath, "utf8");
 
-console.log(`input type: ${options.inputType}`);
-switch(options.inputType){
-    case "JSON":
-        inputObj = convertJSONToObject(textData);
-        break;
-    case "YAML":
-        inputObj = convetYAMLToObject(textData);
-        break;
-    case "XML":
-        inputObj = convetXMLToObject(textData);
-        break;
-    default: 
-        console.log("cannot parse input type");
+    return textData;
 }
 
-console.log(`output type: ${options.outputType}`);
-switch(options.outputType){
-    case "JSON":
-        outputText = convertObjectToJSON(inputObj);
-        break;
-    case "YAML":
-        outputText = convertObjectToYAML(inputObj);
-        break;
-    case "XML":
-        outputText = convertObjectToXML(inputObj);
-        break;
-    default: 
-        console.log("cannot parse output type");
+const convertInputTextToObject = (inputText, inputType) => {
+    let inputObj = null;
+    console.log(`input type: ${inputType}`);
+
+    switch(inputType){
+        case "JSON":
+            inputObj = convertJSONToObject(textData);
+            break;
+        case "YAML":
+            inputObj = convetYAMLToObject(textData);
+            break;
+        case "XML":
+            inputObj = convetXMLToObject(textData);
+            break;
+        default: 
+            console.log("cannot parse input type");
+    }
+
+    return inputObj
 }
 
-if(options.outputFile){
-    fs.writeFile(options.outputFile, outputText, (err) => {
-        if(err) {
-            return console.log(err);
-        }
-        console.log("The file was saved!");
-    }); 
-}else {
-    console.log(outputText);
+const convertInputObjToText = (inputObj, outputType) => {
+    let outputText = "";
+    console.log(`output type: ${outputType}`);
+
+    switch(outputType){
+        case "JSON":
+            outputText = convertObjectToJSON(inputObj);
+            break;
+        case "YAML":
+            outputText = convertObjectToYAML(inputObj);
+            break;
+        case "XML":
+            outputText = convertObjectToXML(inputObj);
+            break;
+        default: 
+            console.log("cannot parse output type");
+    }
+
+    return outputText;
+}
+
+const rightOutputToFileOrConsole = (outputText, outputfilepath) => {
+    if(outputfilepath){
+        fs.writeFile(outputfilepath, outputText, (err) => {
+            if(err) {
+                return console.log(err);
+            }
+            console.log("The file was saved!");
+        }); 
+    }else {
+        console.log(outputText);
+    }
 }
