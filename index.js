@@ -52,4 +52,13 @@ switch(options.outputType){
         console.log("cannot parse output type");
 }
 
-console.log(outputText);
+if(options.outputFile){
+    fs.writeFile(options.outputFile, outputText, (err) => {
+        if(err) {
+            return console.log(err);
+        }
+        console.log("The file was saved!");
+    }); 
+}else {
+    console.log(outputText);
+}
