@@ -18,6 +18,10 @@ Usage: -i <input-file> -it <input-type> -o <output-file> -ot <output-type>
 |  -o, --outputFile       |   output file path                | [string] {console if null} |
 |      --ot, --outputType |  output file type: JSON/YAML/XML..| [string] [required]        |
 
+The supported format for now are:
+- JSON
+- XML
+- YAML
 
 ### Examples:
 - JSON To YAML
