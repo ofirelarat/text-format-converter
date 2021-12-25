@@ -6,6 +6,7 @@ const fs = require("fs");
 const {convertJSONToObject, convertObjectToJSON} = require("./converters/JSON-converter");
 const {convetYAMLToObject, convertObjectToYAML} = require("./converters/YAML-converter");
 const {convetXMLToObject, convertObjectToXML} = require("./converters/XML-converter");
+const {convertCSVToObject, convertObjectToCSV} = require("./converters/CSV-converter");
 
 const options = yargs
  .usage("Usage: -i <input-file> -it <input-type> -o <output-file> -ot <output-type>")
@@ -15,13 +16,8 @@ const options = yargs
  .option("ot",{ alias: "outputType", describe: "output file type: JSON/YAML/XML..", type: "string", demandOption: true })
  .argv;
 
-const textData = readInputFile(options.inputFile);
-const inputObj = convertInputTextToObject(textData, options.inputType);
-const outputText = convertInputObjToText(inputObj, options.outputType);
-rightOutputToFileOrConsole(outputText, options.outputFile);
 
-
-const readInputFile = (inputFilePath) => {
+ const readInputFile = (inputFilePath) => {
     console.log(`input file path: ${inputFilePath}`);
     const textData = fs.readFileSync(inputFilePath, "utf8");
 
@@ -41,6 +37,9 @@ const convertInputTextToObject = (inputText, inputType) => {
             break;
         case "XML":
             inputObj = convetXMLToObject(textData);
+            break;
+        case "CSV":
+            inputObj = convertCSVToObject(textData);
             break;
         default: 
             console.log("cannot parse input type");
@@ -63,6 +62,9 @@ const convertInputObjToText = (inputObj, outputType) => {
         case "XML":
             outputText = convertObjectToXML(inputObj);
             break;
+        case "CSV": 
+            outputText = convertObjectToCSV(inputObj);
+            break;
         default: 
             console.log("cannot parse output type");
     }
@@ -82,3 +84,9 @@ const rightOutputToFileOrConsole = (outputText, outputfilepath) => {
         console.log(outputText);
     }
 }
+
+const textData = readInputFile(options.inputFile);
+const inputObj = convertInputTextToObject(textData, options.inputType);
+const outputText = convertInputObjToText(inputObj, options.outputType);
+rightOutputToFileOrConsole(outputText, options.outputFile);
+
