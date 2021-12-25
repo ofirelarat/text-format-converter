@@ -22,6 +22,7 @@ The supported format for now are:
 - JSON
 - XML
 - YAML
+- CSV
 
 ### Examples:
 - JSON To YAML
