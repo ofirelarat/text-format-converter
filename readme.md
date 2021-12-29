@@ -5,6 +5,9 @@ js package for convert different format of text file
 lets say you need yaml configuration and you already have json file with the same data,
 just use this package and convert the file to yaml.
 
+### installation
+> npm i -g format-cnv
+
 ```
 Usage: -i <input-file> -it <input-type> -o <output-file> -ot <output-type>
 ```
