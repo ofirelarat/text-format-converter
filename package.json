@@ -1,7 +1,7 @@
 {
-  "name": "text-format-converter",
+  "name": "format-cnv",
   "version": "1.0.0",
-  "description": "just easy way to convert different text formats",
+  "description": "just easy way to convert different text files formats",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
