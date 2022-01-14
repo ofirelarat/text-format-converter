@@ -1,6 +1,6 @@
 {
   "name": "format-cnv",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "just easy way to convert different text files formats",
   "main": "index.js",
   "scripts": {
