@@ -6,8 +6,21 @@ lets say you need yaml configuration and you already have json file with the sam
 just use this package and convert the file to yaml.
 
 ## installation
+> npm i format-cnv
+or install globally for cli usage
 > npm i -g format-cnv
 
+
+## Code usage
+```javascript
+const {convertCSVToObject} = require("format-cnv/lib");
+
+const csvObj = convertCSVToObject(`fname,lname
+ofir, elarat
+fisrtname, lastname`);
+
+console.log(csvObj)
+```
 
 ## CLI usage
 
@@ -41,13 +54,3 @@ The supported format for now are:
     > format-cnv -i /sample.yaml --it YAML -o /output.json --ot JSON
 
 
-## Code usage
-```javascript
-const {convertCSVToObject} = require("format-cnv/lib");
-
-const csvObj = convertCSVToObject(`fname,lname
-ofir, elarat
-fisrtname, lastname`);
-
-console.log(csvObj)
-```
