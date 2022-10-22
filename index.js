@@ -89,4 +89,3 @@ const textData = readInputFile(options.inputFile);
 const inputObj = convertInputTextToObject(textData, options.inputType);
 const outputText = convertInputObjToText(inputObj, options.outputType);
 rightOutputToFileOrConsole(outputText, options.outputFile);
-

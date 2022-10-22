@@ -8,7 +8,7 @@ const convetXMLToObject = async (xml) => {
 }
 
 const convertObjectToXML = (obj) => {
-    console.log(`convert to yaml`);
+    console.log(`convert to xml`);
  
     const builder = new Builder();
     const xml = builder.buildObject(obj);

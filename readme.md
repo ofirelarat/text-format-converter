@@ -5,10 +5,13 @@ js package for convert different format of text file
 lets say you need yaml configuration and you already have json file with the same data,
 just use this package and convert the file to yaml.
 
-### installation
+## installation
 > npm i -g format-cnv
 
-```
+
+## CLI usage
+
+```sh
 Usage: -i <input-file> -it <input-type> -o <output-file> -ot <output-type>
 ```
 
@@ -36,3 +39,15 @@ The supported format for now are:
 
 - YAML To JSON
     > format-cnv -i /sample.yaml --it YAML -o /output.json --ot JSON
+
+
+## Code usage
+```javascript
+const {convertCSVToObject} = require("format-cnv/lib");
+
+const csvObj = convertCSVToObject(`fname,lname
+ofir, elarat
+fisrtname, lastname`);
+
+console.log(csvObj)
+```

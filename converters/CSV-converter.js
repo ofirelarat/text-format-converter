@@ -1,5 +1,5 @@
 const convertCSVToObject = (csv) => {
-    console.log(`convert from json`);
+    console.log(`convert from csv`);
 
     var lines=csv.split("\n");
     var result = [];
@@ -18,7 +18,7 @@ const convertCSVToObject = (csv) => {
 }
 
 const convertObjectToCSV = (obj) => {
-    console.log(`convert to json`);
+    console.log(`convert to csv`);
     let csv = '';
 
     const fields = Object.keys(obj[0])
