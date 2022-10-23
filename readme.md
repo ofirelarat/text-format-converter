@@ -22,6 +22,20 @@ fisrtname, lastname`);
 console.log(csvObj)
 ```
 
+### Functions:
+
+|       function          |         description                  | [input] [output]   | 
+|-------------------------|--------------------------------------|--------------------|
+| convertCSVToObject      | convert csv string format to object  | [string] [object] |
+| convertObjectToCSV      | convert object to csv string foramt  | [object] [string] |
+| convetXMLToObject       | convert xml string format to object  | [string] [object] |
+| convertObjectToXML      | convert object to xml string foramt  | [object] [string] |
+| convetYAMLToObject      | convert yaml string format to object | [string] [object] |
+| convertObjectToYAML     | convert object to yaml string foramt | [object] [string] |
+| convertJSONToObject     | convert json string format to object | [string] [object] |
+| convertObjectToJSON     | convert object to json string foramt | [object] [string] |
+
+
 ## CLI usage
 
 ```sh

@@ -18,6 +18,9 @@
     "type": "git",
     "url": "https://github.com/ofirelarat/text-format-converter.git"
   },
+  "bugs": {
+    "url": "https://github.com/ofirelarat/text-format-converter/issues"
+  },
   "license": "ISC",
   "dependencies": {
     "xml2js": "^0.4.23",
