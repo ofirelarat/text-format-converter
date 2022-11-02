@@ -6,10 +6,13 @@ lets say you need yaml configuration and you already have json file with the sam
 just use this package and convert the file to yaml.
 
 ## installation
-> npm i format-cnv
+```sh
+npm i format-cnv
+```
 or install globally for cli usage
-> npm i -g format-cnv
-
+```sh
+npm i -g format-cnv
+```
 
 ## Code usage
 ```javascript
@@ -34,6 +37,8 @@ console.log(csvObj)
 | convertObjectToYAML     | convert object to yaml string foramt | [object] [string] |
 | convertJSONToObject     | convert json string format to object | [string] [object] |
 | convertObjectToJSON     | convert object to json string foramt | [object] [string] |
+| convertb64ToUTF8        | convert base64 string UTF8 object    | [string] [string] |
+| convertTextToBase64     | convert string to base64 string      | [string] [string] |
 
 
 ## CLI usage
